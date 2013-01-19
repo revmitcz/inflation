@@ -28,7 +28,6 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-console.log(routes);
 app.get('/', routes.index);
 app.get('/:year', convert.index);
 app.get('/:year/:year2', convert.index);
