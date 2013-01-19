@@ -8,7 +8,6 @@ var CURRENT_YEAR = 1900 + new Date().getYear();
  */
 
 exports.index = function(req, res){
-
   try {
     var y1 = parseInt(req.params.year);
     var y2 = req.params.year2 ? parseInt(req.params.year2) : CURRENT_YEAR;
@@ -28,29 +27,30 @@ exports.index = function(req, res){
     // TODO some error
   }
 
-  var amount_diff = Math.abs(amount - converted_amount);
-
   var pct;
-  if (y1 > y2) {
-    pct = amount_diff / converted_amount * 100;
+  var factor;
+  var amount_diff = Math.abs(amount - converted_amount);
+  if (y1 < y2) {
+    factor = converted_amount / amount;
   }
   else {
-    pct = amount_diff / amount * 100;
+    factor = amount / converted_amount;
   }
 
-  var pct_per_year = pct / Math.abs(y1 - y2);
-  pct_per_year = pct_per_year.toFixed(1);
+  var pct_per_year = Math.pow(factor, 1/Math.abs(y1 - y2));
+  pct_per_year = (pct_per_year-1) * 100;
+  pct_per_year = pct_per_year.toFixed(2);
 
   var what_happen;
-  var max_year = Math.max(y1, y2);
-  var min_year = Math.min(y1, y2);
-  if (y1 === max_year) {
-    what_happen = amount < converted_amount ? 'deflation' : 'inflation';
-  }
-  else {
+  if (y1 < y2) {
     what_happen = amount < converted_amount ? 'inflation' : 'deflation';
   }
+  else {
+    what_happen = amount < converted_amount ? 'deflation' : 'inflation';
+  }
 
+  var max_year = Math.max(y1, y2);
+  var min_year = Math.min(y1, y2);
   res.render('index', {
     year: y1,
     comparison_year: y2,
@@ -60,5 +60,6 @@ exports.index = function(req, res){
     converted_amount: converted_amount,
     pct: pct_per_year,
     what_happen: what_happen,
+    pre_1913: min_year < 1913,
   });
 };

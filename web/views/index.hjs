@@ -7,10 +7,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
-    <style>
-      body { padding-top: 60px; /* 60px to make the container go all the way
-      to the bottom of the topbar */ }
-    </style>
     <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
@@ -26,12 +22,22 @@
     <style>
       body {
         margin: 0 50px auto;
+        padding-top: 60px;
 
+      }
+
+      .highlighted-amount {
+         background-color:#ccffff;
+        -moz-border-radius: 0.5em;     /* for mozilla-based browsers */
+        -webkit-border-radius: 0.5em;  /* for webkit-based browsers */
+        border-radius: 0.5em;          /* theoretically for *all* browsers
+                                        dependant on implementation of CSS3 */
+        border: 1px solid #ccc;
+        padding: 3px;
       }
 
       .main-info {
         margin-bottom: 20px;
-
       }
     </style>
   </head>
@@ -60,9 +66,9 @@
     <div class="main-info container-fluid">
       <div>
         <h1 style="text-align: center;">
-          $<span style="background-color:#ccffff">{{amount}}</span>
+          $<span class="highlighted-amount">{{amount}}</span>
           in {{year}} &rarr;
-          $<span style="background-color:#ccffff">{{converted_amount}}</span>
+          $<span class="highlighted-amount">{{converted_amount}}</span>
           in {{comparison_year}}
         </h1>
       </div>
@@ -75,7 +81,7 @@
               Inflation Calculator
             </h4>
             <form class="form-inline">
-              How much does
+              How much would
               <div class="input-prepend">
                 <span class="add-on">
                   $
@@ -104,7 +110,12 @@
         </div>
         <div>
           <p>
+          {{#pre_1913}}
           <img src="http://upload.wikimedia.org/wikipedia/commons/2/20/US_Historical_Inflation_Ancient.svg" style="height:300px;width:auto;"/>
+          {{/pre_1913}}
+          {{^pre_1913}}
+          <img src="http://upload.wikimedia.org/wikipedia/commons/8/8c/US_Historical_Inflation.svg" style="height:300px;width:auto;"/>
+          {{/pre_1913}}
           </p>
         </div>
         <hr>
@@ -128,9 +139,9 @@
     <style>
 
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">-->
     </script>
-    <script src="assets/js/bootstrap.js">
+    <!--<script src="/assets/js/bootstrap.js">-->
     </script>
   </body>
 </html>
