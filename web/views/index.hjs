@@ -44,7 +44,7 @@
   <body>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
+        <div class="container-fluid">
           <a class="brand" href="#">
             In {{comparison_year}} dollars...
           </a>
@@ -63,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div class="main-info container">
+    <div class="main-info container-fluid">
       <div>
         <h1 style="text-align: center;">
           $<span class="highlighted-amount">{{amount}}</span>
@@ -73,7 +73,7 @@
         </h1>
       </div>
     </div>
-    <div class="row">
+    <div class="row-fluid">
       <div class="span4">
         <div class="well">
           <div>
@@ -89,7 +89,7 @@
                 <input id="amount" class="input-small" value="{{amount}}" style="width:40px;" type="text">
               </div>
               in the year
-              <input id="y1" class="input-small" value="{{year}}" style="width:34px;"  type="text">
+              <input id="y1" class="input-small" value="{{year}}" style="width:34px;"  type="text"><wbr/>
               get you in
               <input id="y2" class="input-small" value="{{comparison_year}}" style="width:34px;" type="text">
               ?
