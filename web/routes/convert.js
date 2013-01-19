@@ -7,7 +7,12 @@ var CURRENT_YEAR = 1900 + new Date().getYear();
  * GET conversion page
  */
 
-exports.index = function(req, res){
+exports.main = function(req, res){
+  handle(req, res);
+};
+
+function handle(req, res) {
+  console.log(req.params.year, req.params.year2);
   try {
     var y1 = parseInt(req.params.year);
     var y2 = req.params.year2 ? parseInt(req.params.year2) : CURRENT_YEAR;
@@ -62,4 +67,4 @@ exports.index = function(req, res){
     deflation: deflation,
     pre_1913: min_year < 1913,
   });
-};
+}

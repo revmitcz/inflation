@@ -29,9 +29,12 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/:year', convert.index);
-app.get('/:year/:year2', convert.index);
-//app.get('/users', user.list);
+app.get('/inflation-:year-to-:year2', convert.main);
+app.get('/in-:year-dollars', convert.main);
+app.get('/:year-dollars-in-:year2-dollars', convert.main);
+app.get('/:year-dollars-in-:year2', convert.main);
+app.get('/:year', convert.main);
+app.get('/:year/:year2', convert.main);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

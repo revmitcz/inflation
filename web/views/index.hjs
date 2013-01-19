@@ -156,7 +156,7 @@
           return false;
         }
         window.location = '/' + y1
-          + '/'
+          + '-dollars-in-'
           + y2
           + '?amount=' + amount
         return false;
