@@ -28,7 +28,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
+app.get('/', convert.home);
 app.get('/inflation-:year-to-:year2', convert.main);
 app.get('/in-:year-dollars', convert.main);
 app.get('/:year-dollars-in-:year2-dollars', convert.main);

@@ -63,6 +63,12 @@
         </div>
       </div>
     </div>
+    {{#show_error}}
+    <div class="alert alert-error" style="text-align:center;">
+      <strong>Sorry</strong>, we didn't understand all of your query.  Please check that you put in valid dates and dollar amounts.
+    </div>
+    <hr/>
+    {{/show_error}}
     <div class="main-info container-fluid">
       <div>
         <h1 style="text-align: center;">
