@@ -105,7 +105,12 @@
       <div class="span8">
         <div>
           <p style="font-size:20px;">
-          Between {{min_year}} and {{max_year}}, the United States saw {{what_happen}} at an average rate of {{pct}}% per year.
+          {{#deflation}}
+          Between {{min_year}} and {{max_year}}, the United States saw <strong>deflation</strong> at an average rate of {{pct}}% per year.
+          {{/deflation}}
+          {{^deflation}}
+          Between {{min_year}} and {{max_year}}, the United States saw inflation at an average rate of {{pct}}% per year.
+          {{/deflation}}
           </p>
         </div>
         <div>

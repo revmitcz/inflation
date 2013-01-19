@@ -39,14 +39,14 @@ exports.index = function(req, res){
 
   var pct_per_year = Math.pow(factor, 1/Math.abs(y1 - y2));
   pct_per_year = (pct_per_year-1) * 100;
-  pct_per_year = pct_per_year.toFixed(2);
+  pct_per_year = Math.abs(pct_per_year).toFixed(2);
 
-  var what_happen;
+  var deflation;
   if (y1 < y2) {
-    what_happen = amount < converted_amount ? 'inflation' : 'deflation';
+    deflation = amount > converted_amount;
   }
   else {
-    what_happen = amount < converted_amount ? 'deflation' : 'inflation';
+    deflation = amount < converted_amount;
   }
 
   var max_year = Math.max(y1, y2);
@@ -59,7 +59,7 @@ exports.index = function(req, res){
     amount: amount,
     converted_amount: converted_amount,
     pct: pct_per_year,
-    what_happen: what_happen,
+    deflation: deflation,
     pre_1913: min_year < 1913,
   });
 };
