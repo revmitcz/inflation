@@ -11,7 +11,7 @@ exports.index = function(req, res){
   try {
     var y1 = parseInt(req.params.year);
     var y2 = req.params.year2 ? parseInt(req.params.year2) : CURRENT_YEAR;
-    var amount = req.query.amount ? parseInt(req.query.amount) : DEFAULT_AMOUNT;
+    var amount = req.query.amount ? parseFloat(req.query.amount) : DEFAULT_AMOUNT;
   }
   catch (ex) {
     // TODO some error

@@ -44,7 +44,7 @@
   <body>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container-fluid">
+        <div class="container">
           <a class="brand" href="#">
             In {{comparison_year}} dollars...
           </a>
@@ -63,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div class="main-info container-fluid">
+    <div class="main-info container">
       <div>
         <h1 style="text-align: center;">
           $<span class="highlighted-amount">{{amount}}</span>
@@ -73,25 +73,25 @@
         </h1>
       </div>
     </div>
-    <div class="row-fluid">
+    <div class="row">
       <div class="span4">
         <div class="well">
           <div>
             <h4>
               Inflation Calculator
             </h4>
-            <form class="form-inline">
+            <form id="form-calculate" class="form-inline">
               How much would
               <div class="input-prepend">
                 <span class="add-on">
                   $
                 </span>
-                <input class="input-small" value="{{amount}}" style="width:40px;" type="text">
+                <input id="amount" class="input-small" value="{{amount}}" style="width:40px;" type="text">
               </div>
-              in
-              <input class="input-small" value="{{year}}" style="width:34px;"  type="text">
+              in the year
+              <input id="y1" class="input-small" value="{{year}}" style="width:34px;"  type="text">
               get you in
-              <input class="input-small" value="{{comparison_year}}" style="width:34px;" type="text">
+              <input id="y2" class="input-small" value="{{comparison_year}}" style="width:34px;" type="text">
               ?
               <br>
               <br>
@@ -144,7 +144,23 @@
     <style>
 
     </style>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script>
+      $('#form-calculate').submit(function() {
+        var y1 = parseInt($('#y1').val());
+        var y2 = parseInt($('#y2').val());
+        var amount = parseFloat($('#amount').val());
+        if (isNaN(y1) || isNaN(y2) || isNaN(amount)) {
+          alert('Sorry, please make sure you put in numbers.');
+          return false;
+        }
+        window.location = '/' + y1
+          + '/'
+          + y2
+          + '?amount=' + amount
+        return false;
+      });
     </script>
     <!--<script src="/assets/js/bootstrap.js">-->
     </script>
