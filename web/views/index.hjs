@@ -178,7 +178,7 @@ mixpanel = {track: function() {}};
 }
 else {
 mixpanel.init("6adf9366b227975969048025fd8fcd24");
-mixpanel.track('compare', {year2: '{{year}}', year2: '{{year2}}', amount: '{{amount}}');
+mixpanel.track('compare', {year2: '{{year}}', year2: '{{year2}}', amount: '{{amount}}'});
 }
 </script><!-- end Mixpanel -->
   </body>
