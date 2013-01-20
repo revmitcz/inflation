@@ -4,7 +4,7 @@ var sm = require('sitemap')
 var sitemap_urls = [];
 for (var i=1900; i <= compare.max_year; i++) {
   var jstart = i;
-  if (i < 1950) {
+  if (i < 1940) {
     jstart = 1990;
   }
   for (var j=jstart; j <= compare.max_year; j++) {
@@ -22,9 +22,17 @@ for (var i=1900; i <= compare.max_year; i++) {
     else {
       priority = .2;
     }
+    /*
     sitemap_urls.push({url: 'inflation-' + i + '-to-' + j, changefreq: 'yearly', priority: priority});
     sitemap_urls.push({url: 'in-' + i + '-dollars', changefreq: 'yearly', priority: priority});
-    sitemap_urls.push({url: i + '-dollars-in-' + j + '-dollars', changefreq: 'yearly', priority: priority});
+    */
+    if (j === (1900+new Date().getYear())) {
+      // this year
+      sitemap_urls.push({url: i + '-dollars-today', changefreq: 'yearly', priority: priority});
+    }
+    else {
+      sitemap_urls.push({url: i + '-dollars-to-' + j + '-dollars', changefreq: 'yearly', priority: priority});
+    }
   }
 }
 console.log(sitemap_urls.length, 'in sitemap');
