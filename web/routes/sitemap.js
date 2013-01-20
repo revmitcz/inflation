@@ -26,13 +26,15 @@ for (var i=1900; i <= compare.max_year; i++) {
     sitemap_urls.push({url: 'inflation-' + i + '-to-' + j, changefreq: 'yearly', priority: priority});
     sitemap_urls.push({url: 'in-' + i + '-dollars', changefreq: 'yearly', priority: priority});
     */
+    /*
     if (j === (1900+new Date().getYear())) {
       // this year
       sitemap_urls.push({url: i + '-dollars-today', changefreq: 'yearly', priority: priority});
     }
     else {
-      sitemap_urls.push({url: i + '-dollars-to-' + j + '-dollars', changefreq: 'yearly', priority: priority});
     }
+    */
+    sitemap_urls.push({url: i + '-dollars-to-' + j + '-dollars', changefreq: 'yearly', priority: priority});
   }
 }
 console.log(sitemap_urls.length, 'in sitemap');

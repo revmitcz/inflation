@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>${{amount}} in {{year}} is worth ${{converted_amount}} in {{comparison_year}} - In {{comparison_year}} Dollars</title>
+    <title>{{year}} dollars to {{comparison_year}} dollars - In {{comparison_year}} dollars</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -45,9 +45,10 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="brand" href="#">
-            In {{comparison_year}} dollars...
+          <a class="brand" href="#" style="text-align:center;">
+            {{year}} dollars in {{comparison_year}} dollars
           </a>
+          <!--
           <ul class="nav">
             <li>
               <a href="#">
@@ -60,6 +61,7 @@
               </a>
             </li>
           </ul>
+          -->
         </div>
       </div>
     </div>
