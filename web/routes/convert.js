@@ -72,11 +72,15 @@ function handle(req, res) {
     comparison_year: y2,
     max_year: max_year,
     min_year: min_year,
-    amount: amount,
-    converted_amount: converted_amount,
+    amount: numberWithCommas(amount),
+    converted_amount: numberWithCommas(converted_amount),
     pct: pct_per_year,
     deflation: deflation,
     pre_1913: min_year < 1913,
     show_error: show_error,
   });
+}
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
