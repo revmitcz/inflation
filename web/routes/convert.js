@@ -73,6 +73,7 @@ function handle(req, res) {
     max_year: max_year,
     min_year: min_year,
     amount: numberWithCommas(amount),
+    amount_without_commas: amount,
     converted_amount: numberWithCommas(converted_amount),
     pct: pct_per_year,
     deflation: deflation,

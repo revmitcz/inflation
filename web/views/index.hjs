@@ -94,7 +94,7 @@
                 <span class="add-on">
                   $
                 </span>
-                <input id="amount" class="input-small" value="{{amount}}" style="width:40px;" type="text">
+                <input id="amount" class="input-small" value="{{amount_without_commas}}" style="width:40px;" type="text">
               </div>
               in the year
               <input id="y1" class="input-small" value="{{year}}" style="width:34px;"  type="text"><wbr/>
