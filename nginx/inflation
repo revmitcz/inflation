@@ -5,6 +5,7 @@ server {
 
 
 server {
+    server_name  www.in2013dollars.com;
     location / {
         proxy_pass_header Server;
         proxy_set_header Host $http_host;
