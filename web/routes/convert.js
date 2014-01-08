@@ -1,7 +1,7 @@
 var compare = require('../../lib/calc.js');
 
 var DEFAULT_AMOUNT = 100;
-var CURRENT_YEAR = 1900 + new Date().getYear();
+var CURRENT_YEAR = 2013; //1900 + new Date().getYear();
 
 exports.home = function(req, res) {
   req.params.year = 2000;
