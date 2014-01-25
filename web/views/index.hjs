@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>{{year}} dollars to {{comparison_year}} dollars - In {{comparison_year}} dollars</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="Mitcz Marzoni">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/assets/css/custom.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
       </script>
@@ -19,148 +19,139 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
     -->
-    <style>
-      body {
-        margin: 0 50px auto;
-        padding-top: 60px;
-
-      }
-
-      .highlighted-amount {
-         background-color:#ccffff;
-        -moz-border-radius: 0.5em;     /* for mozilla-based browsers */
-        -webkit-border-radius: 0.5em;  /* for webkit-based browsers */
-        border-radius: 0.5em;          /* theoretically for *all* browsers
-                                        dependant on implementation of CSS3 */
-        border: 1px solid #ccc;
-        padding: 3px;
-      }
-
-      .main-info {
-        margin-bottom: 20px;
-      }
-    </style>
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="brand" href="#" style="text-align:center;">
-            {{year}} dollars in {{comparison_year}} dollars
-          </a>
-          <!--
-          <ul class="nav">
-            <li>
-              <a href="#">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                About
-              </a>
-            </li>
-          </ul>
-          -->
-        </div>
-      </div>
-    </div>
-    {{#show_error}}
-    <div class="alert alert-error" style="text-align:center;">
-      <strong>Sorry</strong>, we didn't understand all of your query.  Please check that you put in valid dates and dollar amounts.
-    </div>
-    <hr/>
-    {{/show_error}}
-    <div class="main-info container-fluid">
-      <div>
-        <h1 style="text-align: center;">
-          $<span class="highlighted-amount">{{amount}}</span>
-          in {{year}} &rarr;
-          $<span class="highlighted-amount">{{converted_amount}}</span>
-          in {{comparison_year}}
-        </h1>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span4">
-        <div class="well">
-          <div>
-            <h4>
-              Inflation Calculator
-            </h4>
-            <form id="form-calculate" class="form-inline">
-              How much would
-              <div class="input-prepend">
-                <span class="add-on">
-                  $
-                </span>
-                <input id="amount" class="input-small" value="{{amount_without_commas}}" style="width:40px;" type="text">
-              </div>
-              in the year
-              <input id="y1" class="input-small" value="{{year}}" style="width:34px;"  type="text"><wbr/>
-              get you in
-              <input id="y2" class="input-small" value="{{comparison_year}}" style="width:34px;" type="text">
-              ?
-              <br>
-              <br>
-              <button class="btn" type="submit">
-                Calculate
-              </button>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <a class="navbar-brand text-center" href="/">
+          {{year}} dollars in {{comparison_year}} dollars
+        </a>
+      </div><!-- ./ .container -->
+    </div><!-- ./ .navbar -->
+    <div class="main-info container">
+	    {{#show_error}}
+	    <div class="alert alert-danger text-center">
+	      <strong>Oops! that didn't work</strong>. Please check that you put in valid years (1665 - {{max_year}}) and dollar amounts (numbers only).
+	    </div><!-- ./ .alert -->
+	    {{/show_error}}
+      <h1 class="text-center">
+        <div class="row">
+	        <div class="col-sm-5">
+		        <span class="highlighted-amount">$ {{amount}}</span>
+		        <div class="price-block"><span class="light">in {{year}}</span></div>
+		      </div><!-- ./ col -->
+		      <div class="col-sm-2 text-center">
+	        	<div class="price-equals">is like</div>
+	        </div><!-- ./ col -->
+	        <div class="col-sm-5">
+		        <span class="highlighted-amount">$ {{converted_amount}}</span>
+		        <div class="price-block"><span class="light">in {{comparison_year}}</span></div>
+		      </div><!-- ./ col -->
+		    </div><!-- ./ .row -->
+      </h1>
+      <br><br>
+	    <div class="row">
+	      <div class="col-md-4">
+	        <div class="well">
+            <h4>Inflation Calculator</h4>
+            <form id="form-calculate">
+							<label for="amount">How much would...</label>
+            	<div class="form-group">
+	              <div class="input-group">
+	              	<span class="input-group-addon">$</span>
+									<input id="amount" value="{{amount}}" type="text" class="form-control" tabindex="1" maxlength="15">
+	              </div><!-- ./ .input-group -->
+							</div><!-- ./ .form-group -->
+							<div class="row">
+								<div class="col-xs-6">
+		            	<div class="form-group">
+			              <label for="y1">...in the year</label>
+			              <input id="y1" value="{{year}}" type="text" class="form-control" tabindex="2" maxlength="4">
+									</div><!-- ./ .form-group -->
+								</div><!-- ./ col -->
+								<div class="col-xs-6">
+		            	<div class="form-group">
+			              <label for="y2">be worth in...</label>
+			              <input id="y2" value="{{comparison_year}}" type="text" class="form-control" tabindex="3" maxlength="4">
+			            </div><!-- ./ .form-group -->
+			          </div><!-- ./ col -->
+		          </div><!-- ./ .row -->
+		          <div class="text-center">
+	              <button class="btn btn-primary" type="submit">Calculate</button>
+	            </div><!-- ./ .text-center -->
             </form>
-          </div>
-        </div>
-      </div>
-      <div class="span8">
-        <div>
-          <p style="font-size:20px;">
+	        </div><!-- ./ .well -->
+	      </div><!-- ./ col -->
+	      <div class="col-md-8">
+          <p class="lead">
           {{#deflation}}
-          Between {{min_year}} and {{max_year}}, the United States saw <strong>deflation</strong> at an average rate of {{pct}}% per year.
+          Between <strong>{{min_year}}</strong> and <strong>{{max_year}}</strong>, the United States saw <strong>deflation</strong> at an average rate of {{pct}}% per year.
           {{/deflation}}
           {{^deflation}}
-          Between {{min_year}} and {{max_year}}, the United States saw inflation at an average rate of {{pct}}% per year.
+          Between <strong>{{min_year}}</strong> and <strong>{{max_year}}</strong>, the United States saw inflation at an average rate of {{pct}}% per year.
           {{/deflation}}
           </p>
-        </div>
-        <div>
           <p>
           {{#pre_1913}}
-          <img src="http://upload.wikimedia.org/wikipedia/commons/2/20/US_Historical_Inflation_Ancient.svg" style="height:300px;width:auto;"/>
+          <img src="http://upload.wikimedia.org/wikipedia/commons/2/20/US_Historical_Inflation_Ancient.svg">
           {{/pre_1913}}
           {{^pre_1913}}
-          <img src="http://upload.wikimedia.org/wikipedia/commons/8/8c/US_Historical_Inflation.svg" style="height:300px;width:auto;"/>
+          <img src="http://upload.wikimedia.org/wikipedia/commons/8/8c/US_Historical_Inflation.svg">
           {{/pre_1913}}
           </p>
-        </div>
-        <hr>
-        <div>
-          <p>
-            <strong>
-              Source:
-            </strong>
-            This information is from the Bureau of Labor Statistic's annual
-            <a href="http://www.bls.gov/cpi/" target="_blank">
-              Consumer Price Index
-            </a>
-            (CPI), which was established in 1913. Inflation data from 1665 to
-            1912 is sourced from a historical study conducted by political science
-            professor Robert Sahr at Oregon State University.
-          </p>
-        </div>
-      </div>
+	        <hr>
+	          <p><strong>Source :</strong> This information is from the Bureau of Labor Statistic's annual <a href="http://www.bls.gov/cpi/" target="_blank">Consumer Price Index</a> (CPI), which was established in 1913. Inflation data from 1665 to 1912 is sourced from a historical study conducted by political science professor Robert Sahr at Oregon State University.</p>
+	      </div>
+	    </div>
+    </div><!-- ./ .container -->
+    <div class="navbar navbar-default navbar-fixed-bottom">
+    	<div class="container">
+    		<div class="navbar-brand text-center"><small>Read the <a href="/about">website credits and stuff</a></small></div>
+    	</div><!-- ./ .container -->
     </div>
-
-    <style>
-
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script>
+
+			function is_numeric(n) {
+				return !isNaN(parseFloat(n)) && isFinite(n);
+			}
+
+		  function format(thisNum) {
+		      //Seperates the components of the number
+		      var n = thisNum;
+		      n = n.toString().split(".");
+		      //Comma-fies the first part
+		      n[0] = n[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		      //Combines the two sections
+		      return n.join(".");
+		  }
+		  
+		  function stripCommas(thisNum) {
+			  var thisNum = parseFloat(thisNum.replace(/,/g,''));
+			  return thisNum;
+		  }
+		  
+		  $("#amount").on("blur",function() {
+		  	var amountNum = $(this).val();
+		  	if(is_numeric(amountNum)) {
+		  		if(amountNum % 1 == 0) {
+		  			amountNum = (amountNum + ".00");
+			  		$(this).val(format(amountNum));
+		  		} else {
+			  		$(this).val(format(amountNum));
+		  		}
+			  } else {
+				  return false;
+			  }
+		  });
+
       $('#form-calculate').submit(function() {
         var y1 = parseInt($('#y1').val());
-        var y2 = parseInt($('#y2').val());
-        var amount = parseFloat($('#amount').val());
-        if (isNaN(y1) || isNaN(y2) || isNaN(amount)) {
-          alert('Sorry, please make sure you put in numbers.');
+        var y2 = parseInt($('#y2').val());	
+        var amount = stripCommas($('#amount').val());
+        console.log(amount);
+        if (!is_numeric(y1) || !is_numeric(y2) || !is_numeric(amount)) {
+          alert('Sorry, we can only calculate numbers for DOLLARS and YEARS.');
           return false;
         }
         window.location = '/' + y1
@@ -169,17 +160,7 @@
           + '?amount=' + amount
         return false;
       });
+
     </script>
-<!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
-typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,
-e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
-if (~document.location.href.indexOf('localhost')) {
-mixpanel = {track: function() {}};
-}
-else {
-mixpanel.init("6adf9366b227975969048025fd8fcd24");
-mixpanel.track('compare', {year1: '{{year}}', year2: '{{year2}}', amount: '{{amount}}'});
-}
-</script><!-- end Mixpanel -->
   </body>
 </html>
