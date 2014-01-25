@@ -1,16 +1,24 @@
 var compare = require('../../lib/calc.js');
 
-var DEFAULT_AMOUNT = 100;
+var DEFAULT_AMOUNT = 1000;
 var CURRENT_YEAR = 1900 + new Date().getYear();
 
 exports.home = function(req, res) {
-  req.params.year = 2000;
+  req.params.year = 1990;
   handle(req, res);
 }
 
 exports.main = function(req, res) {
   handle(req, res);
 };
+
+exports.about = function(req, res) {
+	about_handle(req, res);
+};
+
+function about_handle(req, res) {
+  res.render('about');	
+}
 
 function handle(req, res) {
   var show_error = false;
@@ -19,15 +27,15 @@ function handle(req, res) {
   var amount = req.query.amount ? parseFloat(req.query.amount) : DEFAULT_AMOUNT;
 
   if (isNaN(y1)) {
-    y1 = 2000;
+    y1 = 1990;
     show_error = true;
   }
   if (isNaN(y2)) {
-    y2 = 2013;
+    y2 = 2014;
     show_error = true;
   }
   if (isNaN(amount)) {
-    amount = 100.0;
+    amount = 1000.00;
     show_error = true;
   }
 
