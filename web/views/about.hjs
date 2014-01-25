@@ -35,7 +35,7 @@
     	<h3 class="light">Why make this site when a similar one already existed?</h3>
     	<p>I wanted a good exercise to learn some basics about Node.js, I wanted it a bit more mobile-optimized, I think "InTodaysDollars" is a better name for the site, and.. hell, why not?</p>
     	<h3 class="light">Is there a copyright? Can I do the same thing?</h3>
-    	<p>No copyright of any kind. The whole thing is open source. Go nuts.</p>
+    	<p>No copyright of any kind. The whole thing is open source. Go nuts. I even forked this particular set of modifications to the original, which is <a href="https://github.com/revmitcz/inflation" target="_blank">available on Github</a>. Apologies that I'm pretty terrible at Node, so my modifications are probably quite sloppy.</p>
     </div><!-- ./ .container -->
     <div class="navbar navbar-default navbar-fixed-bottom">
     	<div class="container">
