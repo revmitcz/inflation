@@ -24,6 +24,7 @@ app.configure('development', function(){
 });
 
 app.get('/', convert.home);
+app.get('/about',convert.about);
 app.get('/inflation-:year-to-:year2', convert.main);
 app.get('/in-:year-dollars', convert.main);
 app.get('/:year-dollars-in-:year2-dollars', convert.main);
